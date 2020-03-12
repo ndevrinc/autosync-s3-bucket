@@ -1,0 +1,27 @@
+{
+  "name": "autocopy-s3-bucket",
+  "description": "A Lambda function for performing event driven asset copying between buckets.",
+  "main": "index.js",
+  "author": {
+    "name": "ndevr"
+  },
+  "version": "0.0.1",
+  "private": true,
+  "devDependencies": {
+    "aws-sdk": "^2.437.0",
+    "aws-sdk-mock": "^4.4.0",
+    "mocha": "^6.1.4",
+    "sinon": "^7.3.2",
+    "nyc": "^14.0.0"
+  },
+  "scripts": {
+    "pretest": "yarn run build:init && yarn install",
+    "test": "nyc --reporter=html --reporter=text mocha",
+    "build:init": "rm -rf package-lock.json && rm -rf dist && rm -rf node_modules",
+    "build:zip": "zip -rq autosync-s3-bucket.zip .",
+    "build:dist": "mkdir dist && mv autosync-s3-bucket.zip dist/",
+    "examples": "cp example.config.json config.json && cp example.template.yaml template.yaml && cp events/example.event.json events.json",
+    "build": "yarn run build:init && yarn install --arch=x64 --platform=linux --production && yarn run build:zip && yarn run build:dist"
+  },
+  "license": "Apache-2.0"
+}

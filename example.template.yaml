@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  autosync-s3-bucket
+
+  Lambda app for copying updated objects between S3 buckets.
+
+Globals:
+  Function:
+    Timeout: 10
+
+Resources:
+  ImageHandlerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./
+      Handler: index.handler
+      Runtime: nodejs12.x
+      Role: arn:aws:iam::111111111111:role/lambda-s3-role

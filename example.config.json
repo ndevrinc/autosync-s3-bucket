@@ -1,0 +1,10 @@
+{
+  "buckets": {
+    "test-bucket-source1": [
+      "test-bucket-destination-a",
+      "test-bucket-destination-b"
+    ],
+    "test-bucket-source2": [
+    ]
+  }
+}
